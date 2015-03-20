@@ -1,1 +1,2 @@
-(name 'DynaCASE-Model-PeterUhnak.1' message 'Separated model.' id '6e427dac-49f2-4285-acc6-2513269a0a17' date '19 March 2015' time '12:40:14.751447 am' author 'PeterUhnak' ancestors () stepChildren ())
+(name 'DynaCASE-Model-PeterUhnak.2' message 'Added DCEdge to simplify some edge-related behavior.' id '2f8e7c63-d4c4-4387-a15a-cec6447d9823' date '20 March 2015' time '11:50:28.674507 pm' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnÃk.1' message 'Separated model.
+' id '4ca00754-b0b7-5e43-b03f-bd4804ed67c7' date '19 March 2015' time '12:40:15 am' author 'PeterUhnÃk' ancestors () stepChildren ())) stepChildren ())

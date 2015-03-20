@@ -1,7 +1,1 @@
-A DCModelObject represents the model (semantics).
-
-Instance Variables
-	announcer:		<Object>
-
-announcer
-	- xxxxx
+A DCModelObject is base class for any semantic element of a metamodel.
