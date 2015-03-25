@@ -1,4 +1,4 @@
-as yet unclassified
+serialization
 stonOn: stonWriter
 	| instanceVariableNames |
 	(instanceVariableNames := self class allInstVarNames) isEmpty
