@@ -1,4 +1,4 @@
-updating
+announcing
 changed
 	super changed.
-	self announce: (DCElementChanged element: self)
+	self announceChanged: self
