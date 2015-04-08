@@ -2,7 +2,7 @@ serialization
 stonOn: stonWriter
 	| instanceVariableNames |
 	(instanceVariableNames := self class allInstVarNames) isEmpty
-		ifTrue: [ stonWriter writeObject: self do: [ self encodeMap: #() ] ]
+		ifTrue: [ stonWriter writeObject: self do: [ stonWriter encodeMap: #() ] ]
 		ifFalse: [ 
 			stonWriter
 				writeObject: self
