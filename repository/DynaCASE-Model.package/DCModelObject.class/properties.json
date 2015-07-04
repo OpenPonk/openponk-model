@@ -6,12 +6,12 @@
 		 ],
 	"commentStamp" : "PeterUhnak 3/19/2015 23:45",
 	"instvars" : [
-		"announcer",
 		"dcID",
 		"owner",
-		"dcName" ],
+		"dcName",
+		"elements" ],
 	"name" : "DCModelObject",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "DCAnnouncableObject",
 	"type" : "normal" }

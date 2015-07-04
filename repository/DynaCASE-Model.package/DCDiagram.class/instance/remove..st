@@ -1,7 +1,7 @@
 removing
 remove: anElement
+	anElement announcer unsubscribe: self.
 	elements remove: anElement.
 	anElement removedFrom: self.
-	anElement announcer unsubscribe: self.
 	self changed.
 	self announce: (DCElementRemoved element: anElement)

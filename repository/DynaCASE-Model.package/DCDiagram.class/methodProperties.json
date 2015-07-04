@@ -2,10 +2,5 @@
 	"class" : {
 		 },
 	"instance" : {
-		"add:" : "bliznjan 4/8/2015 12:07:19",
-		"addAll:" : "PeterUhnak 6/13/2015 05:56",
-		"elements" : "bliznjan 4/8/2015 12:07:19",
-		"has:" : "bliznjan 4/8/2015 12:07:19",
-		"initialize" : "bliznjan 4/8/2015 12:07:19",
-		"remove:" : "bliznjan 4/8/2015 12:07:19",
-		"removeAll" : "bliznjan 4/8/2015 12:07:19" } }
+		"add:" : "PeterUhnak 6/13/2015 06:29:58",
+		"remove:" : "PeterUhnak 7/4/2015 01:22" } }
