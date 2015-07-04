@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "PeterUhnak 3/19/2015 23:45",
+	"commentStamp" : "PeterUhnak 7/4/2015 21:02",
 	"instvars" : [
-		 ],
-	"name" : "DCDiagram",
+		"announcer" ],
+	"name" : "DCAnnouncableObject",
 	"pools" : [
 		 ],
-	"super" : "DCModelObject",
+	"super" : "Object",
 	"type" : "normal" }
