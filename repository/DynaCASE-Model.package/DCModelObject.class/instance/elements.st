@@ -1,3 +1,3 @@
 accessing
-ownedElements
+elements
 	^ elements
