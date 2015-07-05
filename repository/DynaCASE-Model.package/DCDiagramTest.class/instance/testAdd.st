@@ -1,15 +1,12 @@
 tests
 testAdd
-	| diagram el added changed |
-	diagram := DCDiagram new.
-	el := DCNamedElement new.
-
+	| added changed |
 	added := nil.
 	changed := nil.
 	diagram when: DCElementAdded do: [ :event | added := event element ].
 	diagram when: DCElementChanged do: [ :event | changed := event element ].
-	diagram add: el.
+	diagram add: element.
 
-	self assert: added = el.
-	self assert: changed = diagram.
-	self assert: (diagram has: el).
+	self assert: added equals: element.
+	self assert: changed equals: diagram.
+	self assertCollection: diagram ownedElements hasSameElements: {element}
