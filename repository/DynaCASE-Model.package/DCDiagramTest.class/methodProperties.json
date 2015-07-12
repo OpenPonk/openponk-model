@@ -2,6 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
-		"testAdd" : "PeterUhnak 6/13/2015 06:29:58",
-		"testDiagram" : "PeterUhnak 6/13/2015 06:29:58",
-		"testRemove" : "PeterUhnak 6/13/2015 06:29:58" } }
+		"setUp" : "PeterUhnak 7/5/2015 08:35",
+		"testAdd" : "PeterUhnak 7/5/2015 08:34",
+		"testChange" : "PeterUhnak 7/5/2015 08:33",
+		"testRemove" : "PeterUhnak 7/5/2015 08:34" } }
