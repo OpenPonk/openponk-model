@@ -1,3 +1,3 @@
 removing
 removeAll
-	elements copy do: [ :each | self remove: each ]
+	[ elements isNotEmpty ] whileTrue: [ self remove: elements anyOne ]
