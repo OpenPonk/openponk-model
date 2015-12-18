@@ -2,9 +2,9 @@ language: smalltalk
 sudo: false
 smalltalk:
     - Pharo-5.0
+baseline: DynaCASEModel
 env:
     global:
-        - BASELINE="DynaCASEModel"
         - TESTS="DynaCASE.*"
         - PACKAGES="/repository"
         - BASELINE_GROUP="default"
