@@ -5,5 +5,8 @@ SmalltalkCISpec {
 			#directory : 'repository',
 			#platforms : [ #pharo ]
 		}
-	]
+	],
+	#testing : {
+		#packages : [ 'DynaCASE.*' ]
+	}
 }
