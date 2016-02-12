@@ -17,8 +17,11 @@ before_install:
 before_script:
   - echo -e "Host ccmi.fit.cvut.cz\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-deploy:
-  provider: script
-  script: deploy.sh
-  on:
-    branch: master
+after_success:
+  - ./deploy.sh
+
+#deploy:
+#  provider: script
+#  script: deploy.sh
+#  on:
+#    branch: master

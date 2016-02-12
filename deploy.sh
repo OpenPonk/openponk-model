@@ -59,4 +59,6 @@ main() {
 	deploy
 }
 
-main
+if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+	main
+fi
