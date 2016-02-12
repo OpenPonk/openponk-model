@@ -11,8 +11,10 @@ smalltalk:
   - Pharo-5.0
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_e257e7f53604_key -iv $encrypted_e257e7f53604_iv -in ~/.ssh/id_dynacase_travis.enc -out ~/.ssh/id_dynacase_travis -d
-  - chmod 0400 ~/.ssh/id_dynacase_travis
+  - openssl aes-256-cbc -K $encrypted_e257e7f53604_key -iv $encrypted_e257e7f53604_iv -in .ssh/id_dynacase_travis.enc -out .ssh/id_dynacase_travis -d
+  - chmod 0400 .ssh/id_dynacase_travis
+  - ssh-agent
+  - ssh-add .ssh/id_dynacase_travis
 
 before_script:
   - echo -e "Host ccmi.fit.cvut.cz\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/id_dynacase_travis\n" >> ~/.ssh/config
