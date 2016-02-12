@@ -47,7 +47,7 @@ prepare_vms() {
 deploy() {
 	cd $DEPLOY_DIR
 	local build_zip="${DEPLOY_NAME}-${TRAVIS_BUILD_NUMBER}.zip"
-	zip -r "$build_zip" "$DEPLOY_NAME.image" "$DEPLOY_NAME.changes" "$(basename "$SMALLTALK_CI_VMS")"
+	zip -r "$build_zip" "run.sh" "$DEPLOY_NAME.image" "$DEPLOY_NAME.changes" "$(basename "$SMALLTALK_CI_VMS")"
 	scp -rp "$build_zip" "$DEPLOY_TARGET"
 
 }
