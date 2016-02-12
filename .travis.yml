@@ -1,10 +1,11 @@
 language: smalltalk
 sudo: false
+
+# Select operating system(s)
+os:
+  - linux
+#  - osx
+
+# Select compatible Smalltalk image(s)
 smalltalk:
-    - Pharo-5.0
-baseline: DynaCASEModel
-env:
-    global:
-        - TESTS="DynaCASE.*"
-        - PACKAGES="/repository"
-        - BASELINE_GROUP="default"
+  - Pharo-5.0

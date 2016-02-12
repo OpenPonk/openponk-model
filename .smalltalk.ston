@@ -1,0 +1,9 @@
+SmalltalkCISpec {
+	#loading : [
+		SCIMetacelloLoadSpec {
+			#baseline : 'DynaCASEModel',
+			#directory : 'repository',
+			#platforms : [ #pharo ]
+		}
+	]
+}
