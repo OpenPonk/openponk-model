@@ -9,5 +9,3 @@ os:
 # Select compatible Smalltalk image(s)
 smalltalk:
   - Pharo-5.0
-
-script: $SMALLTALK_CI_HOME/run.sh --debug --verbose
