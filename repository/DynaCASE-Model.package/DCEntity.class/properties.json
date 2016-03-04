@@ -1,0 +1,15 @@
+{
+	"category" : "DynaCASE-Model-Models",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"dcID",
+		"name" ],
+	"name" : "DCEntity",
+	"pools" : [
+		 ],
+	"super" : "DCAnnouncableObject",
+	"type" : "normal" }
