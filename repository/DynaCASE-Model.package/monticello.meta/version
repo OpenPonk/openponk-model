@@ -1,2 +1,2 @@
-(name 'DynaCASE-Model-PeterUhnak.20' message 'self changed was fired twice on #remove:.' id '49c3dcda-5866-4a84-803e-368e73137ee6' date '7 March 2016' time '5:33:42.174722 pm' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnak.19' message 'Added DCModelContentReplaced announcement.
-' id '091dbb3e-ccb9-525a-9d9f-701500f0dee9' date '4 March 2016' time '5:27:14 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'DynaCASE-Model-PeterUhnak.21' message 'Added #silentlyDo: to do stuff without announcements.' id 'aec24ad6-be15-45e9-8657-79806bed89c7' date '8 March 2016' time '1:16:12.481186 pm' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnak.20' message 'self changed was fired twice on #remove:.
+' id '1595218a-b94a-5ad5-9504-9b40f4efc7ae' date '7 March 2016' time '5:33:43 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
