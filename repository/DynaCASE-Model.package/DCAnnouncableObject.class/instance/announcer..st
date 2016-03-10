@@ -1,3 +1,3 @@
-announce
+accessing
 announcer: anAnnouncer
 	announcer := anAnnouncer

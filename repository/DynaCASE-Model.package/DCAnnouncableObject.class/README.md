@@ -1,5 +1,3 @@
-I am the root element providing announcer intarace.
+I am above the topmost model element to provide convenient announcer access.
 
-!! Collaborators
-
-Announcer
+Maybe I should be a Trait in the Element instead?

@@ -1,4 +1,4 @@
-announce
+announcement registration
 silentlyDo: aBlock
 	| oldAnnouncer |
 	oldAnnouncer := announcer.

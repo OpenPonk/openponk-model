@@ -6,10 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"dcID",
-		"name" ],
-	"name" : "DCEntity",
+		 ],
+	"name" : "DCMRelationship",
 	"pools" : [
 		 ],
-	"super" : "DCAnnouncableObject",
+	"super" : "DCMElement",
 	"type" : "normal" }

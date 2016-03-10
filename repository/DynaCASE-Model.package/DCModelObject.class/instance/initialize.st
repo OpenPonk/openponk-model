@@ -1,5 +1,5 @@
 initialization
 initialize
 	dcName := ''.
-	dcID := UUID new.
+	uuid := UUID new.
 	elements := OrderedCollection new

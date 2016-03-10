@@ -4,11 +4,11 @@
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "PeterUhnak 3/10/2016 11:55",
+	"commentStamp" : "PeterUhnak 3/10/2016 01:54",
 	"instvars" : [
-		"announcer" ],
-	"name" : "DCAnnouncableObject",
+		"uuid" ],
+	"name" : "DCMElement",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "DCAnnouncableObject",
 	"type" : "normal" }

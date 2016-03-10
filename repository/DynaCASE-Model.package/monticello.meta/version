@@ -1,2 +1,2 @@
-(name 'DynaCASE-Model-PeterUhnak.21' message 'Added #silentlyDo: to do stuff without announcements.' id 'aec24ad6-be15-45e9-8657-79806bed89c7' date '8 March 2016' time '1:16:12.481186 pm' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnak.20' message 'self changed was fired twice on #remove:.
-' id '1595218a-b94a-5ad5-9504-9b40f4efc7ae' date '7 March 2016' time '5:33:43 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'DynaCASE-Model-PeterUhnak.22' message 'WIP rethinking the model.' id '5354a1cf-9e9e-4b1a-99e1-69100bf4e427' date '10 March 2016' time '11:59:09.400824 am' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnak.21' message 'Added #silentlyDo: to do stuff without announcements.
+' id 'ea0b92a1-6290-532e-9af7-a9f700f10e24' date '8 March 2016' time '1:16:13 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
