@@ -9,7 +9,7 @@
 		"owner",
 		"dcName",
 		"elements",
-		"uuid" ],
+		"dcID" ],
 	"name" : "DCModelObject",
 	"pools" : [
 		 ],

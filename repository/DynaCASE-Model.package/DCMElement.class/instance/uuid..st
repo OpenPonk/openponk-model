@@ -1,3 +1,3 @@
 accessing
-uuid: anObject
-	uuid := anObject
+uuid: anUUID
+	uuid := anUUID
