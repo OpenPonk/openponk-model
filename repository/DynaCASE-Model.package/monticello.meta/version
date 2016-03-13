@@ -1,2 +1,2 @@
-(name 'DynaCASE-Model-PeterUhnak.23' message 'models...' id '3d81dada-f6c4-4706-84f4-724998ed2ae5' date '13 March 2016' time '1:56:42.660815 am' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnak.22' message 'WIP rethinking the model.
-' id '5016aa8d-f34b-55d9-b9bc-b5c466a9161e' date '10 March 2016' time '11:59:12 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'DynaCASE-Model-PeterUhnak.24' message 'Provide only uuid for now.' id 'c5eb8851-eaf3-4a58-a160-bab9644eec72' date '13 March 2016' time '2:02:49.94539 am' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnak.23' message 'models...
+' id '45571200-54a3-5bdb-8bf2-ea24e24c6e2a' date '13 March 2016' time '1:56:43 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
