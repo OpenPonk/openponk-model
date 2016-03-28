@@ -1,3 +1,3 @@
 accessing
 uuid
-	^ self dcID
+	^ uuid
