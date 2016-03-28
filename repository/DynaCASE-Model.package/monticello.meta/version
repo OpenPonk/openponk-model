@@ -1,2 +1,2 @@
-(name 'DynaCASE-Model-PeterUhnak.25' message 'MOre compatibility.' id '66f2df46-e54b-45c5-bb5a-10b244a9349f' date '13 March 2016' time '11:45:57.304328 pm' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-PeterUhnak.24' message 'Provide only uuid for now.
-' id '9e3e8beb-78dd-5bd9-8a6d-74fde6c7714e' date '13 March 2016' time '2:02:50 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'DynaCASE-Model-JanTuron.26' message 'Fixed ids in DCModelObject' id '469000fc-e329-46c7-9321-84a87018d4f7' date '28 March 2016' time '5:52:22.184033 pm' author 'JanTuron' ancestors ((name 'DynaCASE-Model-PeterUhnak.25' message 'MOre compatibility.
+' id 'a53076fb-db81-54f0-84c2-90b2bcdec88b' date '13 March 2016' time '11:45:58 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
