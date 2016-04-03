@@ -1,15 +1,16 @@
 {
 	"class" : {
-		 },
+		"stonAllInstVarNames" : "PeterUhnak 4/3/2016 15:22" },
 	"instance" : {
-		"announce:" : "PeterUhnak 3/13/2016 23:45:58",
-		"announceAdded:" : "PeterUhnak 3/13/2016 23:45:58",
-		"announceChanged:" : "PeterUhnak 3/13/2016 23:45:58",
-		"announceRemoved:" : "PeterUhnak 3/13/2016 23:45:58",
-		"announcer" : "PeterUhnak 3/13/2016 23:45:58",
-		"announcer:" : "PeterUhnak 3/13/2016 23:45:58",
-		"changed" : "PeterUhnak 3/13/2016 23:45:58",
-		"silentlyDo:" : "PeterUhnak 3/13/2016 23:45:58",
-		"when:do:" : "PeterUhnak 3/13/2016 23:45:58",
-		"when:send:to:" : "PeterUhnak 3/13/2016 23:45:58",
-		"whenChanged:" : "PeterUhnak 3/13/2016 23:45:58" } }
+		"announce:" : "JanTuron 3/28/2016 17:52:22",
+		"announceAdded:" : "JanTuron 3/28/2016 17:52:22",
+		"announceChanged:" : "JanTuron 3/28/2016 17:52:22",
+		"announceRemoved:" : "JanTuron 3/28/2016 17:52:22",
+		"announcer" : "JanTuron 3/28/2016 17:52:22",
+		"announcer:" : "JanTuron 3/28/2016 17:52:22",
+		"changed" : "JanTuron 3/28/2016 17:52:22",
+		"fuelIgnoredInstanceVariableNames" : "PeterUhnak 4/3/2016 14:29",
+		"silentlyDo:" : "JanTuron 3/28/2016 17:52:22",
+		"when:do:" : "JanTuron 3/28/2016 17:52:22",
+		"when:send:to:" : "JanTuron 3/28/2016 17:52:22",
+		"whenChanged:" : "JanTuron 3/28/2016 17:52:22" } }
