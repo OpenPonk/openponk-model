@@ -1,2 +1,0 @@
-(name 'DynaCASE-Model-PeterUhnak.27' message 'Ignore announcer for ston and fuel exporter.' id 'b5917cc0-2255-4bd6-8359-186be2b5cdb1' date '3 April 2016' time '3:57:04.298377 pm' author 'PeterUhnak' ancestors ((name 'DynaCASE-Model-JanTuron.26' message 'Fixed ids in DCModelObject
-' id '45eac1af-1e66-5851-b014-d46d0219f076' date '28 March 2016' time '5:52:22 pm' author 'JanTuron' ancestors () stepChildren ())) stepChildren ())
