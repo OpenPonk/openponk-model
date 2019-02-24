@@ -1,3 +1,3 @@
-# OpenPonk model [![Build Status](https://travis-ci.org/bliznjan/openponk-model.svg?branch=master)](https://travis-ci.org/bliznjan/openponk-model)
+[![Build Status](https://travis-ci.org/JanBliznicenko/openponk-model.svg?branch=master)](https://travis-ci.org/JanBliznicenko/openponk-model)
 
-This is a deprecated former part of [OpenPonk platform](https://openponk.github.io).
+This is an updated but deprecated former base for models for [OpenPonk platform](https://openponk.github.io).
