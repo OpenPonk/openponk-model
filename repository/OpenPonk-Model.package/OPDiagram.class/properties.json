@@ -1,14 +1,11 @@
 {
-	"category" : "OpenPonk-Model-Models",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 3/19/2015 23:45",
-	"instvars" : [
-		 ],
-	"name" : "OPDiagram",
-	"pools" : [
-		 ],
 	"super" : "OPModelObject",
-	"type" : "normal" }
+	"category" : "OpenPonk-Model-Models",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "OPDiagram",
+	"type" : "normal"
+}

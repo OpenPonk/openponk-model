@@ -1,17 +1,16 @@
 {
-	"category" : "OpenPonk-Model-Models",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 3/19/2015 23:45",
+	"super" : "OPAnnouncableObject",
+	"category" : "OpenPonk-Model-Models",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"owner",
 		"dcName",
 		"elements",
-		"uuid" ],
+		"uuid"
+	],
 	"name" : "OPModelObject",
-	"pools" : [
-		 ],
-	"super" : "OPAnnouncableObject",
-	"type" : "normal" }
+	"type" : "normal"
+}

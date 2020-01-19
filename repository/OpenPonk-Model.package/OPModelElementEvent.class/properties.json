@@ -1,14 +1,13 @@
 {
-	"category" : "OpenPonk-Model-Announcements",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 10/11/2014 22:39",
-	"instvars" : [
-		"element" ],
-	"name" : "OPModelElementEvent",
-	"pools" : [
-		 ],
 	"super" : "OPModelEvent",
-	"type" : "normal" }
+	"category" : "OpenPonk-Model-Announcements",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"element"
+	],
+	"name" : "OPModelElementEvent",
+	"type" : "normal"
+}

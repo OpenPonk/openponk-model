@@ -1,14 +1,13 @@
 {
-	"category" : "OpenPonk-Model-Models",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 3/10/2016 11:55",
-	"instvars" : [
-		"announcer" ],
-	"name" : "OPAnnouncableObject",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "OpenPonk-Model-Models",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"announcer"
+	],
+	"name" : "OPAnnouncableObject",
+	"type" : "normal"
+}
