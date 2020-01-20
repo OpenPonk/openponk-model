@@ -1,15 +1,15 @@
 {
 	"commentStamp" : "PeterUhnak 3/19/2015 23:45",
 	"super" : "OPAnnouncableObject",
-	"category" : "OpenPonk-Model-Models",
+	"category" : "OpenPonk-Model-ModelObjects",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"owner",
-		"dcName",
 		"elements",
-		"uuid"
+		"uuid",
+		"name"
 	],
 	"name" : "OPModelObject",
 	"type" : "normal"

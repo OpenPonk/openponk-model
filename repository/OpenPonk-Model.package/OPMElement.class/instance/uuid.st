@@ -1,3 +1,3 @@
 accessing
 uuid
-	^ uuid
+	^ uuid ifNil: [ uuid := UUID new ]

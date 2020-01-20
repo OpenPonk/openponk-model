@@ -1,7 +1,7 @@
 tests
 testChanged
 	| diagram el changed |
-	el := OPNamedElement new.
+	el := OPModelElement new.
 	changed := nil.
 	el when: OPElementChanged do: [ :event | changed := event element ].
 	self assert: changed isNil.

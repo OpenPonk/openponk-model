@@ -1,4 +1,4 @@
 running
 setUp
-	diagram := OPNamedElement named: 'diagram'.
-	element := OPNamedElement named: 'member'
+	diagram := OPModelElement named: 'diagram'.
+	element := OPModelElement named: 'member'

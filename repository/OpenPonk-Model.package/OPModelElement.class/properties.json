@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "OPDiagram",
+	"name" : "OPModelElement",
 	"type" : "normal"
 }

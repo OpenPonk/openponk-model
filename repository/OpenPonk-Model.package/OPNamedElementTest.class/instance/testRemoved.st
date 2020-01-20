@@ -2,7 +2,7 @@ tests
 testRemoved
 	| diagram el |
 	diagram := OPDiagram new.
-	el := OPNamedElement new.
+	el := OPModelElement new.
 	diagram add: el.
 
 	diagram remove: el.

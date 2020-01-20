@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "PeterUhnak 3/19/2015 23:45",
-	"super" : "OPNamedElement",
-	"category" : "OpenPonk-Model-Models",
+	"super" : "OPModelObject",
+	"category" : "OpenPonk-Model-ModelObjects",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
@@ -9,6 +9,6 @@
 		"source",
 		"target"
 	],
-	"name" : "OPEdge",
+	"name" : "OPDirectedAssociation",
 	"type" : "normal"
 }

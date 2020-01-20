@@ -1,4 +1,4 @@
 accessing
 name: aString
-	dcName := aString.
+	name := aString.
 	self changed

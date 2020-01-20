@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "PeterUhnak 3/19/2015 23:45",
-	"super" : "OPModelObject",
-	"category" : "OpenPonk-Model-Models",
+	"commentStamp" : "",
+	"super" : "OPModelElement",
+	"category" : "OpenPonk-Model-ModelObjects",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
