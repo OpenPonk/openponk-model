@@ -1,1 +1,0 @@
-A DCModelObject is base class for any semantic element of a metamodel.

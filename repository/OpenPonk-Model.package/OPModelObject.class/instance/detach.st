@@ -1,3 +1,0 @@
-removing
-detach
-	owner := nil

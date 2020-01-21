@@ -1,1 +1,0 @@
-I represent the base class of all model elements.

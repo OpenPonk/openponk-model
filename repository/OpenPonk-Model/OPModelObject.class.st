@@ -1,0 +1,180 @@
+"
+A DCModelObject is base class for any semantic element of a metamodel.
+"
+Class {
+	#name : #OPModelObject,
+	#superclass : #OPAnnouncableObject,
+	#instVars : [
+		'owner',
+		'elements',
+		'uuid',
+		'name'
+	],
+	#category : 'OpenPonk-Model-ModelObjects'
+}
+
+{ #category : #'instance creation' }
+OPModelObject class >> named: aString [
+	^ self new
+		name: aString;
+		yourself
+]
+
+{ #category : #adding }
+OPModelObject >> add: anElement [
+	(elements includes: anElement)
+		ifTrue: [ ^ self ].
+	anElement addedTo: self.
+	elements add: anElement.
+	anElement when: OPElementChanged do: [ self changed ].
+	self announceAdded: anElement
+]
+
+{ #category : #adding }
+OPModelObject >> addAll: aCollection [
+	aCollection do: [ :each | self add: each ]
+]
+
+{ #category : #adding }
+OPModelObject >> addedTo: anObject [
+	owner := anObject.
+	self changed
+]
+
+{ #category : #accessing }
+OPModelObject >> belongsTo [
+	"FAMIX compatibility"
+
+	^ self owner
+]
+
+{ #category : #removing }
+OPModelObject >> detach [
+	owner := nil
+]
+
+{ #category : #accessing }
+OPModelObject >> elementNamed: aName [
+	^ self elements detect: [ :each | each name = aName ]
+]
+
+{ #category : #accessing }
+OPModelObject >> elements [
+	^ elements
+]
+
+{ #category : #testing }
+OPModelObject >> has: anElement [
+	^ elements includes: anElement
+]
+
+{ #category : #initialization }
+OPModelObject >> initialize [
+	name := ''.
+	elements := OrderedCollection new
+]
+
+{ #category : #testing }
+OPModelObject >> isInsideOf: aModelObject [
+	^ self owner
+		ifNotNil: [ owner == aModelObject
+				ifTrue: [ true ]
+				ifFalse: [ owner isInsideOf: aModelObject ] ]
+		ifNil: [ false ]
+]
+
+{ #category : #accessing }
+OPModelObject >> name [
+	^ name
+]
+
+{ #category : #accessing }
+OPModelObject >> name: aString [
+	name := aString.
+	self changed
+]
+
+{ #category : #accessing }
+OPModelObject >> ownedElements [
+	^ elements
+]
+
+{ #category : #accessing }
+OPModelObject >> owner [
+	^ owner
+]
+
+{ #category : #printing }
+OPModelObject >> printOn: aStream [
+	super printOn: aStream.
+	aStream
+		nextPutAll: '(''';
+		nextPutAll: self name;
+		nextPutAll: ''')'
+]
+
+{ #category : #accessing }
+OPModelObject >> relatedElements [
+	^ #()
+]
+
+{ #category : #removing }
+OPModelObject >> remove [
+	self owner remove: self
+]
+
+{ #category : #removing }
+OPModelObject >> remove: anElement [
+	(elements includes: anElement)
+		ifFalse: [ ^ self ].
+	anElement announcer unsubscribe: self.
+	anElement removeFrom: self.
+	elements remove: anElement.
+	self announceRemoved: anElement
+]
+
+{ #category : #removing }
+OPModelObject >> removeAll [
+	[ elements isNotEmpty ] whileTrue: [ self remove: elements anyOne ]
+]
+
+{ #category : #removing }
+OPModelObject >> removeFrom: anOwner [
+	self removeRelatedElements.
+	self removeOwnedElements.
+	self detach.
+	self changed
+]
+
+{ #category : #removing }
+OPModelObject >> removeOwnedElements [
+	self ownedElements copy do: [ :each | self remove: each ]
+]
+
+{ #category : #removing }
+OPModelObject >> removeRelatedElements [
+	self relatedElements copy do: [ :each | each remove ]
+]
+
+{ #category : #removing }
+OPModelObject >> removedFrom: anOwner [
+	self removedFrom: anOwner do: [ self removeAll ]
+]
+
+{ #category : #removing }
+OPModelObject >> removedFrom: anOwner do: aBlock [
+	self assert: self owner = anOwner.
+	aBlock value.
+	owner := nil.
+	self changed
+]
+
+{ #category : #accessing }
+OPModelObject >> uuid [
+	^ uuid ifNil: [ uuid := UUID new ]
+]
+
+{ #category : #accessing }
+OPModelObject >> uuid: aUUID [
+	uuid := aUUID
+]

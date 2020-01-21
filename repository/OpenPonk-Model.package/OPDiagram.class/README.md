@@ -1,1 +1,0 @@
-A Diagram is class that holds and takes care of all possible elements of specific diagram.
