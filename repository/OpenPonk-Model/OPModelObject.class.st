@@ -10,7 +10,7 @@ Class {
 		'uuid',
 		'name'
 	],
-	#category : 'OpenPonk-Model-ModelObjects'
+	#category : #'OpenPonk-Model-ModelObjects'
 }
 
 { #category : #'instance creation' }
@@ -23,22 +23,25 @@ OPModelObject class >> named: aString [
 { #category : #adding }
 OPModelObject >> add: anElement [
 	(elements includes: anElement)
-		ifTrue: [ ^ self ].
+		ifTrue: [ ^ anElement ].
 	anElement addedTo: self.
 	elements add: anElement.
 	anElement when: OPElementChanged do: [ self changed ].
-	self announceAdded: anElement
+	self announceAdded: anElement.
+	^ anElement
 ]
 
 { #category : #adding }
 OPModelObject >> addAll: aCollection [
-	aCollection do: [ :each | self add: each ]
+	aCollection do: [ :each | self add: each ].
+	^ aCollection
 ]
 
 { #category : #adding }
 OPModelObject >> addedTo: anObject [
 	owner := anObject.
-	self changed
+	self changed.
+	^ anObject
 ]
 
 { #category : #accessing }
@@ -120,22 +123,26 @@ OPModelObject >> relatedElements [
 
 { #category : #removing }
 OPModelObject >> remove [
-	self owner remove: self
+	^ self owner remove: self
 ]
 
 { #category : #removing }
 OPModelObject >> remove: anElement [
 	(elements includes: anElement)
-		ifFalse: [ ^ self ].
+		ifFalse: [ ^ anElement ].
 	anElement announcer unsubscribe: self.
 	anElement removeFrom: self.
 	elements remove: anElement.
-	self announceRemoved: anElement
+	self announceRemoved: anElement.
+	^ anElement
 ]
 
 { #category : #removing }
 OPModelObject >> removeAll [
-	[ elements isNotEmpty ] whileTrue: [ self remove: elements anyOne ]
+	| removed |
+	removed := elements copy.
+	[ elements isNotEmpty ] whileTrue: [ self remove: elements anyOne ].
+	^ removed
 ]
 
 { #category : #removing }
