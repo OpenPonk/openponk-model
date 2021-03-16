@@ -1,0 +1,6 @@
+{
+	"include" : [
+		{ "repository" : "OpenPonk/borm-model" },
+		{ "repository" : "OpenPonk/fsm-editor" }
+	]
+}
