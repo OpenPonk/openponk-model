@@ -171,7 +171,7 @@ OPModelObject >> removedFrom: anOwner [
 { #category : #removing }
 OPModelObject >> removedFrom: anOwner do: aBlock [
 
-	self assert: self owner equals: anOwner.
+	self assert: self owner = anOwner.
 	aBlock value.
 	owner := nil.
 	self changed
