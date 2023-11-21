@@ -45,6 +45,14 @@ OPModelObject >> addedTo: anObject [
 ]
 
 { #category : #accessing }
+OPModelObject >> allElements [
+	"should return all elements recursively (incl. sub-elements)"
+
+	^ self elements asSet flatCollect: [ :each |
+		  (Set with: each) , each allElements ]
+]
+
+{ #category : #accessing }
 OPModelObject >> belongsTo [
 	"FAMIX compatibility"
 
