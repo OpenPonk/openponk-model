@@ -2,49 +2,51 @@
 A DCModelObject is base class for any semantic element of a metamodel.
 "
 Class {
-	#name : #OPModelObject,
-	#superclass : #OPAnnouncableObject,
+	#name : 'OPModelObject',
+	#superclass : 'OPAnnouncableObject',
 	#instVars : [
 		'owner',
 		'elements',
 		'uuid',
 		'name'
 	],
-	#category : #'OpenPonk-Model-ModelObjects'
+	#category : 'OpenPonk-Model-ModelObjects',
+	#package : 'OpenPonk-Model',
+	#tag : 'ModelObjects'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPModelObject class >> named: aString [
 	^ self new
 		name: aString;
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OPModelObject >> add: anElement [
-	(elements includes: anElement)
-		ifTrue: [ ^ anElement ].
+
+	(elements includes: anElement) ifTrue: [ ^ anElement ].
 	anElement addedTo: self.
 	elements add: anElement.
-	anElement when: OPElementChanged do: [ self changed ].
+	anElement when: OPElementChanged send: #changed to: self.
 	self announceAdded: anElement.
 	^ anElement
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OPModelObject >> addAll: aCollection [
 	aCollection do: [ :each | self add: each ].
 	^ aCollection
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 OPModelObject >> addedTo: anObject [
 	owner := anObject.
 	self changed.
 	^ anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> allElements [
 	"should return all elements recursively (incl. sub-elements)"
 
@@ -52,40 +54,40 @@ OPModelObject >> allElements [
 		  (Set with: each) , each allElements ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> belongsTo [
 	"FAMIX compatibility"
 
 	^ self owner
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> detach [
 	owner := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> elementNamed: aName [
 	^ self elements detect: [ :each | each name = aName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> elements [
 	^ elements
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPModelObject >> has: anElement [
 	^ elements includes: anElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPModelObject >> initialize [
 	name := ''.
 	elements := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPModelObject >> isInsideOf: aModelObject [
 	^ self owner
 		ifNotNil: [ owner == aModelObject
@@ -94,28 +96,28 @@ OPModelObject >> isInsideOf: aModelObject [
 		ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> name: aString [
 	name := aString.
 	self changed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> ownedElements [
 	^ elements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> owner [
 	^ owner
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 OPModelObject >> printOn: aStream [
 	super printOn: aStream.
 	aStream
@@ -124,17 +126,17 @@ OPModelObject >> printOn: aStream [
 		nextPutAll: ''')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> relatedElements [
 	^ #()
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> remove [
 	^ self owner remove: self
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> remove: anElement [
 	(elements includes: anElement)
 		ifFalse: [ ^ anElement ].
@@ -145,7 +147,7 @@ OPModelObject >> remove: anElement [
 	^ anElement
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> removeAll [
 	| removed |
 	removed := elements copy.
@@ -153,7 +155,7 @@ OPModelObject >> removeAll [
 	^ removed
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> removeFrom: anOwner [
 	self removeRelatedElements.
 	self removeOwnedElements.
@@ -161,22 +163,22 @@ OPModelObject >> removeFrom: anOwner [
 	self changed
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> removeOwnedElements [
 	self ownedElements copy do: [ :each | self remove: each ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> removeRelatedElements [
 	self relatedElements copy do: [ :each | each remove ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> removedFrom: anOwner [
 	self removedFrom: anOwner do: [ self removeAll ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 OPModelObject >> removedFrom: anOwner do: aBlock [
 
 	self assert: self owner = anOwner.
@@ -185,12 +187,12 @@ OPModelObject >> removedFrom: anOwner do: aBlock [
 	self changed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> uuid [
 	^ uuid ifNil: [ uuid := UUID new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelObject >> uuid: aUUID [
 	uuid := aUUID
 ]

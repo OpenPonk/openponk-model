@@ -2,32 +2,34 @@
 I am a comment associated with an element.
 "
 Class {
-	#name : #OPMComment,
-	#superclass : #Object,
+	#name : 'OPMComment',
+	#superclass : 'Object',
 	#instVars : [
 		'body'
 	],
-	#category : 'OpenPonk-Model-ModelObjects'
+	#category : 'OpenPonk-Model-ModelObjects',
+	#package : 'OpenPonk-Model',
+	#tag : 'ModelObjects'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPMComment class >> body: aString [
 	^ self new
 		body: aString;
 		yourself
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPMComment class >> isDeprecated [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPMComment >> body [
 	^ body
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPMComment >> body: aString [
 	body := aString
 ]

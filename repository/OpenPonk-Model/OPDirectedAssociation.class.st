@@ -2,23 +2,25 @@
 A DCEdge represents a oriented binary connection between two model objects.
 "
 Class {
-	#name : #OPDirectedAssociation,
-	#superclass : #OPModelObject,
+	#name : 'OPDirectedAssociation',
+	#superclass : 'OPModelObject',
 	#instVars : [
 		'source',
 		'target'
 	],
-	#category : 'OpenPonk-Model-ModelObjects'
+	#category : 'OpenPonk-Model-ModelObjects',
+	#package : 'OpenPonk-Model',
+	#tag : 'ModelObjects'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPDirectedAssociation class >> from: aSourceObject to: aTargetObject [
 	^ self new
 		from: aSourceObject to: aTargetObject;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPDirectedAssociation class >> from: aSourceObject to: aTargetObject named: aString [
 	^ self new
 		from: aSourceObject to: aTargetObject;
@@ -26,28 +28,28 @@ OPDirectedAssociation class >> from: aSourceObject to: aTargetObject named: aStr
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPDirectedAssociation >> from: aSourceObject to: aTargetObject [
 	self source: aSourceObject.
 	self target: aTargetObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPDirectedAssociation >> source [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPDirectedAssociation >> source: aModelObject [
 	source := aModelObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPDirectedAssociation >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPDirectedAssociation >> target: aModelObject [
 	target := aModelObject
 ]

@@ -2,27 +2,29 @@
 I am a base class for model element events. I am announced when the element changes.
 "
 Class {
-	#name : #OPModelElementEvent,
-	#superclass : #OPModelEvent,
+	#name : 'OPModelElementEvent',
+	#superclass : 'OPModelEvent',
 	#instVars : [
 		'element'
 	],
-	#category : 'OpenPonk-Model-Announcements'
+	#category : 'OpenPonk-Model-Announcements',
+	#package : 'OpenPonk-Model',
+	#tag : 'Announcements'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPModelElementEvent class >> element: anElement [
 	^ self new
 		element: anElement;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelElementEvent >> element [
 	^ element
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPModelElementEvent >> element: anElement [
 	element := anElement
 ]
