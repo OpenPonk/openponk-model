@@ -2,12 +2,13 @@
 I am a baseline for https://github.com/OpenPonk/openponk-model
 "
 Class {
-	#name : #BaselineOfOpenPonkModel,
-	#superclass : #BaselineOf,
-	#category : 'BaselineOfOpenPonkModel'
+	#name : 'BaselineOfOpenPonkModel',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfOpenPonkModel',
+	#package : 'BaselineOfOpenPonkModel'
 }
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfOpenPonkModel >> baseline: spec [
 	<baseline>
 	spec
