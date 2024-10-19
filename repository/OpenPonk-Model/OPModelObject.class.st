@@ -138,9 +138,9 @@ OPModelObject >> remove [
 
 { #category : 'removing' }
 OPModelObject >> remove: anElement [
-	(elements includes: anElement)
-		ifFalse: [ ^ anElement ].
-	anElement announcer unsubscribe: self.
+
+	(elements includes: anElement) ifFalse: [ ^ anElement ].
+	anElement unsubscribe: self.
 	anElement removeFrom: self.
 	elements remove: anElement.
 	self announceRemoved: anElement.

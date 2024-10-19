@@ -73,6 +73,12 @@ OPAnnouncableObject >> silentlyDo: aBlock [
 ]
 
 { #category : 'announcement registration' }
+OPAnnouncableObject >> unsubscribe: anObject [
+
+	^ self announcer unsubscribe: anObject
+]
+
+{ #category : 'announcement registration' }
 OPAnnouncableObject >> when: anAnnouncementClass do: aValuable [
 
 	| subscriberForDeprecation |
@@ -106,12 +112,22 @@ OPAnnouncableObject >> when: anEvent do: aBlock for: aReceiver [
 ]
 
 { #category : 'announcement registration' }
-OPAnnouncableObject >> when: anAnnouncementClass send: aSelector to: anObject [
-	self announcer when: anAnnouncementClass send: aSelector to: anObject
+OPAnnouncableObject >> when: anAnnouncementClass send: aSelector to: aReceiver [
+
+	^ self announcer
+		  when: anAnnouncementClass
+		  send: aSelector
+		  to: aReceiver
 ]
 
 { #category : 'announcement registration' }
 OPAnnouncableObject >> whenChanged: aBlock [
 
 	self when: OPElementChanged do: aBlock for: aBlock receiver
+]
+
+{ #category : 'announcement registration' }
+OPAnnouncableObject >> whenChangedSend: aSelector to: aReceiver [
+
+	^ self when: OPElementChanged send: aSelector to: aReceiver
 ]
