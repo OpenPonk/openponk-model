@@ -28,7 +28,7 @@ OPModelObject >> add: anElement [
 	(elements includes: anElement) ifTrue: [ ^ anElement ].
 	anElement addedTo: self.
 	elements add: anElement.
-	anElement when: OPElementChanged send: #changed to: self.
+	anElement weakWhen: OPElementChanged send: #changed to: self.
 	self announceAdded: anElement.
 	^ anElement
 ]
@@ -140,7 +140,6 @@ OPModelObject >> remove [
 OPModelObject >> remove: anElement [
 
 	(elements includes: anElement) ifFalse: [ ^ anElement ].
-	anElement unsubscribe: self.
 	anElement removeFrom: self.
 	elements remove: anElement.
 	self announceRemoved: anElement.

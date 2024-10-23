@@ -44,13 +44,8 @@ OPAnnouncableObject >> announceRemoved: anElement [
 
 { #category : 'accessing' }
 OPAnnouncableObject >> announcer [
-	announcer ifNil: [ self announcer: Announcer new ].
-	^ announcer
-]
 
-{ #category : 'accessing' }
-OPAnnouncableObject >> announcer: anAnnouncer [
-	announcer := anAnnouncer
+	^ announcer ifNil: [ announcer := Announcer new ]
 ]
 
 { #category : 'announcing' }
@@ -76,6 +71,21 @@ OPAnnouncableObject >> silentlyDo: aBlock [
 OPAnnouncableObject >> unsubscribe: anObject [
 
 	^ self announcer unsubscribe: anObject
+]
+
+{ #category : 'announcement registration' }
+OPAnnouncableObject >> weakWhen: anAnnouncementClass send: aSelector to: aReceiver [
+
+	^ self announcer weak
+		  when: anAnnouncementClass
+		  send: aSelector
+		  to: aReceiver
+]
+
+{ #category : 'announcement registration' }
+OPAnnouncableObject >> weakWhenChangedSend: aSelector to: aReceiver [
+
+	^ self weakWhen: OPElementChanged send: aSelector to: aReceiver
 ]
 
 { #category : 'announcement registration' }
