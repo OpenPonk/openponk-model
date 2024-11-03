@@ -1,6 +1,6 @@
 {
 	"include" : [
-		{ "repository" : "OpenPonk/borm-editor", "branch" : "master", "build-dependent" : false },
+		{ "repository" : "OpenPonk/borm-model", "branch" : "master", "build-dependent" : true },
 		{ "repository" : "OpenPonk/petrinets", "branch" : "master", "build-dependent" : false },
 		{ "repository" : "OpenPonk/fsm-editor", "branch" : "master", "build-dependent" : false },
 		{ "repository" : "OpenPonk/BPMN", "branch" : "master", "build-dependent" : false },
