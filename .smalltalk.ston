@@ -6,7 +6,14 @@ SmalltalkCISpec {
 			#platforms : [ #pharo ]
 		}
 	],
-	#testing : {
-		#packages : [ 'OpenPonk*' ]
+	#testing : {		
+		#packages : [
+			'OpenPonk*'
+		],
+		#coverage : { 
+			#packages: [ 
+				'OpenPonk-Model*' 
+			] 
+		}
 	}
 }
