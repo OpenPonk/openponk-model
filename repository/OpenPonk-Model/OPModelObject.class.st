@@ -187,6 +187,14 @@ OPModelObject >> removedFrom: anOwner do: aBlock [
 ]
 
 { #category : 'accessing' }
+OPModelObject >> rootOwner [
+
+	^ self owner
+		  ifNil: [ self ]
+		  ifNotNil: [ :myOwner | myOwner rootOwner ]
+]
+
+{ #category : 'accessing' }
 OPModelObject >> uuid [
 	^ uuid ifNil: [ uuid := UUID new ]
 ]
