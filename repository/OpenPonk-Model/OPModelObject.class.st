@@ -50,8 +50,7 @@ OPModelObject >> addedTo: anObject [
 OPModelObject >> allElements [
 	"should return all elements recursively (incl. sub-elements)"
 
-	^ self elements asSet flatCollect: [ :each |
-		  (Set with: each) , each allElements ]
+	^ self elements asSet flatCollect: [ :each | each withAllElements ]
 ]
 
 { #category : 'accessing' }
@@ -202,4 +201,11 @@ OPModelObject >> uuid [
 { #category : 'accessing' }
 OPModelObject >> uuid: aUUID [
 	uuid := aUUID
+]
+
+{ #category : 'accessing' }
+OPModelObject >> withAllElements [
+	"should return self and all elements recursively (incl. sub-elements)"
+
+	^ (Set with: self) , self allElements
 ]
