@@ -1,5 +1,6 @@
 "
-A DCModelObject is base class for any semantic element of a metamodel.
+Primary base class for semantic elements of an OpenPonk metamodel.
+Provides common structural properties such as a UUID, a name, and hierarchical ownership (parent and child elements) alongside announcement capabilities.
 "
 Class {
 	#name : 'OPModelObject',
@@ -28,7 +29,7 @@ OPModelObject >> add: anElement [
 	(elements includes: anElement) ifTrue: [ ^ anElement ].
 	anElement addedTo: self.
 	elements add: anElement.
-	anElement weakWhen: OPElementChanged send: #changed to: self.
+	anElement weakWhen: OPModelChanged send: #changed to: self.
 	self announceAdded: anElement.
 	^ anElement
 ]
@@ -141,7 +142,7 @@ OPModelObject >> remove: anElement [
 	(elements includes: anElement) ifFalse: [ ^ anElement ].
 	anElement removeFrom: self.
 	elements remove: anElement.
-	self announceRemoved: anElement.
+	self announceRemovedChild: anElement.
 	^ anElement
 ]
 

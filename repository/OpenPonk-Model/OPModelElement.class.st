@@ -1,5 +1,6 @@
 "
-A DCNamedElement represents all possible elements of diagram (such as classes, states, associations). s
+Deprecated legacy base class for named model elements.
+Retained strictly for backward compatibility. Use OPModelObject instead.
 "
 Class {
 	#name : 'OPModelElement',

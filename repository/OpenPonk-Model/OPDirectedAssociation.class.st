@@ -1,5 +1,6 @@
 "
-A DCEdge represents a oriented binary connection between two model objects.
+Model representing a directed binary relationship between two OPModelObjects.
+Explicitly defines and tracks a source element and a target element.
 "
 Class {
 	#name : 'OPDirectedAssociation',

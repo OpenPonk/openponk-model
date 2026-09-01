@@ -1,5 +1,6 @@
 "
-I am a comment associated with an element.
+Deprecated representation of a basic textual comment or note associated with a domain model element.
+Retained for backward compatibility.
 "
 Class {
 	#name : 'OPMComment',

@@ -1,5 +1,6 @@
 "
-I represent the base class of all model elements.
+Deprecated legacy base class for model elements.
+Retained strictly for backward compatibility. Use OPModelObject instead.
 "
 Class {
 	#name : 'OPMElement',

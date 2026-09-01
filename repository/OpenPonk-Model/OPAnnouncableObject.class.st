@@ -1,7 +1,6 @@
 "
-I am above the topmost model element to provide convenient announcer access.
-
-Maybe I should be a Trait in the Element instead?
+Foundational base class providing built-in announcement capabilities (via an Announcer).
+Might be used as the root class for domain model elements in OpenPonk notations that need to broadcast lifecycle and state changes.
 "
 Class {
 	#name : 'OPAnnouncableObject',
@@ -26,20 +25,21 @@ OPAnnouncableObject >> announce: anAnnouncement [
 
 { #category : 'announcing' }
 OPAnnouncableObject >> announceAdded: anElement [
-	self announce: (OPElementAdded element: anElement).
-	self changed
+
+	self announce: (OPModelChildAdded model: self child: anElement)
 ]
 
 { #category : 'announcing' }
 OPAnnouncableObject >> announceChanged: anElement [
-	self announce: (OPElementChanged element: anElement)
+
+	self announce: (OPModelChanged model: anElement)
 ]
 
 { #category : 'announcing' }
-OPAnnouncableObject >> announceRemoved: anElement [
-	self announce: (OPElementRemoved element: anElement).
-	anElement announce: (OPElementRemoved element: anElement).
-	self changed
+OPAnnouncableObject >> announceRemovedChild: anElement [
+
+	self announce: (OPModelChildRemoved model: self child: anElement).
+	anElement announce: (OPModelRemoved model: self)
 ]
 
 { #category : 'accessing' }
@@ -48,12 +48,12 @@ OPAnnouncableObject >> announcer [
 	^ announcer ifNil: [ announcer := Announcer new ]
 ]
 
-{ #category : 'announcing' }
+{ #category : 'updating' }
 OPAnnouncableObject >> changed [
 	self announceChanged: self
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'fuel support' }
 OPAnnouncableObject >> fuelIgnoredInstanceVariableNames [
 	^ #(#announcer)
 ]
@@ -85,7 +85,7 @@ OPAnnouncableObject >> weakWhen: anAnnouncementClass send: aSelector to: aReceiv
 { #category : 'announcement registration' }
 OPAnnouncableObject >> weakWhenChangedSend: aSelector to: aReceiver [
 
-	^ self weakWhen: OPElementChanged send: aSelector to: aReceiver
+	^ self weakWhen: OPModelChanged send: aSelector to: aReceiver
 ]
 
 { #category : 'announcement registration' }
@@ -133,11 +133,11 @@ OPAnnouncableObject >> when: anAnnouncementClass send: aSelector to: aReceiver [
 { #category : 'announcement registration' }
 OPAnnouncableObject >> whenChanged: aBlock [
 
-	self when: OPElementChanged do: aBlock for: aBlock receiver
+	self when: OPModelChanged do: aBlock for: aBlock receiver
 ]
 
 { #category : 'announcement registration' }
 OPAnnouncableObject >> whenChangedSend: aSelector to: aReceiver [
 
-	^ self when: OPElementChanged send: aSelector to: aReceiver
+	^ self when: OPModelChanged send: aSelector to: aReceiver
 ]

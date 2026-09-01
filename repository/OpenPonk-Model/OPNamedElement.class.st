@@ -1,3 +1,7 @@
+"
+Deprecated legacy class representing a model element with a name.
+Retained strictly for backward compatibility.
+"
 Class {
 	#name : 'OPNamedElement',
 	#superclass : 'OPModelElement',
@@ -5,10 +9,3 @@ Class {
 	#package : 'OpenPonk-Model',
 	#tag : 'ModelObjects'
 }
-
-{ #category : 'testing' }
-OPNamedElement class >> isDeprecated [
-	"There is no difference between types of elements. Use OPModelObject instead (or don't use any class of this package)"
-
-	^ true
-]

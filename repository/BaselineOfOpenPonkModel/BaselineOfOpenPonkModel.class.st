@@ -8,7 +8,7 @@ Class {
 	#package : 'BaselineOfOpenPonkModel'
 }
 
-{ #category : 'baseline' }
+{ #category : 'baselines' }
 BaselineOfOpenPonkModel >> baseline: spec [
 	<baseline>
 	spec

@@ -1,3 +1,7 @@
+"
+Unit tests for OPModelObject.
+Verifies structural operations such as adding, removing, and reparenting elements, as well as the correct firing of domain events.
+"
 Class {
 	#name : 'OPModelObjectTest',
 	#superclass : 'TestCase',
@@ -21,20 +25,20 @@ OPModelObjectTest >> setUp [
 OPModelObjectTest >> testAdd [
 
 	| added changed |
-	added := nil.
-	changed := nil.
+	added := Set new.
+	changed := Set new.
 	diagram
-		when: OPElementAdded
-		do: [ :event | added := event element ]
+		when: OPModelChildAdded
+		do: [ :event | added add: event child ]
 		for: self.
 	diagram
-		when: OPElementChanged
-		do: [ :event | changed := event element ]
+		when: OPModelChanged
+		do: [ :event | changed add: event model ]
 		for: self.
 	diagram add: element.
 
-	self assert: added equals: element.
-	self assert: changed equals: diagram.
+	self assertCollection: added hasSameElements: { element }.
+	self assertCollection: changed includesAny: { diagram }.
 	self
 		assertCollection: diagram ownedElements
 		hasSameElements: { element }
@@ -62,8 +66,8 @@ OPModelObjectTest >> testChanged [
 	| changed |
 	changed := nil.
 	element
-		when: OPElementChanged
-		do: [ :event | changed := event element ]
+		when: OPModelChanged
+		do: [ :event | changed := event model ]
 		for: self.
 	self assert: changed isNil.
 	changed := nil.
@@ -80,23 +84,27 @@ OPModelObjectTest >> testChanged [
 { #category : 'tests' }
 OPModelObjectTest >> testRemove [
 
-	| removed changed |
+	| removed changed changedByChildRemoval |
 	diagram add: element.
 
 	removed := nil.
 	changed := nil.
+	changedByChildRemoval := nil.
 	diagram
-		when: OPElementRemoved
-		do: [ :event | removed := event element ]
+		when: OPModelChildRemoved
+		do: [ :event |
+				removed := event child.
+				changedByChildRemoval := event model ]
 		for: self.
 	diagram
-		when: OPElementChanged
-		do: [ :event | changed := event element ]
+		when: OPModelChanged
+		do: [ :event | changed := event model ]
 		for: self.
 	diagram remove: element.
 
 	self assert: removed equals: element.
 	self assert: changed equals: diagram.
+	self assert: changedByChildRemoval equals: diagram.
 	self assert: diagram elements isEmpty
 ]
 
