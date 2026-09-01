@@ -10,9 +10,14 @@ Class {
 
 { #category : 'baselines' }
 BaselineOfOpenPonkModel >> baseline: spec [
+
 	<baseline>
-	spec
-		for: #common
-		do: [ spec package: 'OpenPonk-Model'.
-			spec group: 'default' with: #('OpenPonk-Model') ]
+	spec for: #common do: [
+			spec
+				baseline: 'OpenPonk'
+				with: [ spec repository: 'github://openponk/openponk' ].
+			spec package: 'OpenPonk-Model'.
+			spec
+				group: 'plugin' with: #( 'OpenPonk-Model' );
+				group: 'default' with: #( 'OpenPonk' 'plugin' ) ]
 ]
