@@ -16,11 +16,16 @@ OPModelObjectViewModel class >> isAbstract [
 	^ self = OPModelObjectViewModel
 ]
 
-{ #category : 'private' }
+{ #category : 'removing' }
 OPModelObjectViewModel >> basicRemoveModel [
 	"Specific domain model removal logic - removal from owner, disconnecting from peers, etc."
 
-	self model owner remove: self model
+	self model owner
+		ifNotNil: [ :modelOwner | modelOwner remove: self model ]
+		ifNil: [
+			self projectViewModel ifNotNil: [ :theProjectViewModel |
+				theProjectViewModel model ifNotNil: [ :theProject |
+					theProject removeModel: self model ] ] ]
 ]
 
 { #category : 'accessing' }
