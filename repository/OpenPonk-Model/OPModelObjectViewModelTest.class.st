@@ -1,3 +1,6 @@
+"
+Tests baseline view model behavior, property notification, and change propagation for core model objects.
+"
 Class {
 	#name : 'OPModelObjectViewModelTest',
 	#superclass : 'TestCase',
