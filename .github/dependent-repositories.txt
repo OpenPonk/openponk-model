@@ -1,11 +1,1 @@
-{
-	"include" : [
-		{ "repository" : "OpenPonk/borm-model", "branch" : "master", "build-dependent" : true },
-		{ "repository" : "OpenPonk/petrinets", "branch" : "master", "build-dependent" : false },
-		{ "repository" : "OpenPonk/fsm-editor", "branch" : "master", "build-dependent" : false },
-		{ "repository" : "OpenPonk/BPMN", "branch" : "master", "build-dependent" : false },
-		{ "repository" : "OpenPonk/markov-chains", "branch" : "master", "build-dependent" : false },
-		{ "repository" : "OpenPonk/ERD", "branch" : "main", "build-dependent" : false },
-		{ "repository" : "OpenPonk/DEMO", "branch" : "main", "build-dependent" : false }
-	]
-}
+{	"include" : [		{ "repository" : "OpenPonk/borm-model", "branch" : "master", "build-dependent" : true },		{ "repository" : "OpenPonk/simulation", "branch" : "master", "build-dependent" : true },		{ "repository" : "OpenPonk/petrinets", "branch" : "master", "build-dependent" : false },		{ "repository" : "OpenPonk/fsm-editor", "branch" : "master", "build-dependent" : false },		{ "repository" : "OpenPonk/BPMN", "branch" : "master", "build-dependent" : false },		{ "repository" : "OpenPonk/markov-chains", "branch" : "master", "build-dependent" : false },		{ "repository" : "OpenPonk/ERD", "branch" : "main", "build-dependent" : false },		{ "repository" : "OpenPonk/DEMO", "branch" : "main", "build-dependent" : false }	]}
