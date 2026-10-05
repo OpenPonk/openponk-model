@@ -83,6 +83,9 @@ OPModelObject >> has: anElement [
 
 { #category : 'initialization' }
 OPModelObject >> initialize [
+
+	super initialize.
+	uuid := UUID new.
 	name := ''.
 	elements := OrderedCollection new
 ]
@@ -196,7 +199,8 @@ OPModelObject >> rootOwner [
 
 { #category : 'accessing' }
 OPModelObject >> uuid [
-	^ uuid ifNil: [ uuid := UUID new ]
+
+	^ uuid
 ]
 
 { #category : 'accessing' }
