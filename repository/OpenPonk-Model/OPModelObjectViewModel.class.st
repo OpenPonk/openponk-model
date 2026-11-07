@@ -64,7 +64,12 @@ OPModelObjectViewModel >> subscribeToModel [
 
 	self model announcer
 		when: Announcement
-		do: [ :ann | self announcer announce: ann ]
+		do: [ :ann |
+			(parentViewModel isNotNil and: [
+				self model owner isNotNil and: [
+					parentViewModel model ~~ self model owner ] ])
+				ifTrue: [ parentViewModel := nil ].
+			self announcer announce: ann ]
 		for: self
 ]
 
