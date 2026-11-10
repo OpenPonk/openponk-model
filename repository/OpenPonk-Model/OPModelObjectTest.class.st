@@ -96,16 +96,13 @@ OPModelObjectTest >> testRemove [
 				removed := event child.
 				changedByChildRemoval := event model ]
 		for: self.
-	diagram
-		when: OPModelChanged
-		do: [ :event | changed := event model ]
-		for: self.
+	diagram when: OPModelChanged do: [ :event | changed := event model ] for: self.
 	diagram remove: element.
 
 	self assert: removed equals: element.
 	self assert: changed equals: diagram.
 	self assert: changedByChildRemoval equals: diagram.
-	self assert: diagram elements isEmpty
+	self assertEmpty: diagram elements
 ]
 
 { #category : 'tests' }

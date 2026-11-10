@@ -8,6 +8,7 @@ Class {
 
 { #category : 'tests' }
 OPModelObjectSerializationTest >> testMaterializeDiagramAfterCreatingElementWithoutPriorUuidAccess [
+
 	| model element diagram shape serializedModelStream serializedDiagramStream loadedModel loadedDiagram |
 	model := OPTestModelObject new name: 'TestModel'.
 	element := OPTestModelObject new name: 'TestEntity'.
@@ -31,14 +32,11 @@ OPModelObjectSerializationTest >> testMaterializeDiagramAfterCreatingElementWith
 	loadedModel := OPStonModelSerializer new materializeModelFrom: serializedModelStream contents readStream.
 
 	"4. Materialize diagram from STON using loaded model - non-interactively trap OPDiagramInvalid as failure"
-	[
-		loadedDiagram := OPStonDiagramSerializer new
-			materializeDiagramOf: loadedModel
-			from: serializedDiagramStream contents readStream.
-	] on: OPDiagramInvalid do: [ :warning |
-		self fail: 'Diagram materialization signaled OPDiagramInvalid: ' , warning messageText ].
-
-	self assert: loadedDiagram ownedElements isNotEmpty.
+	loadedDiagram := [
+	                 OPStonDiagramSerializer new materializeDiagramOf: loadedModel from: serializedDiagramStream contents readStream ]
+		                 on: OPDiagramInvalid
+		                 do: [ :warning | self fail: 'Diagram materialization signaled OPDiagramInvalid: ' , warning messageText ].
+	self denyEmpty: loadedDiagram ownedElements.
 	self assert: loadedDiagram ownedElements first modelElement equals: loadedModel elements first
 ]
 
