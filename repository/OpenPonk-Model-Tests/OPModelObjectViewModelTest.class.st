@@ -4,9 +4,9 @@ Tests baseline view model behavior, property notification, and change propagatio
 Class {
 	#name : 'OPModelObjectViewModelTest',
 	#superclass : 'TestCase',
-	#category : 'OpenPonk-Model-Tests',
-	#package : 'OpenPonk-Model',
-	#tag : 'Tests'
+	#category : 'OpenPonk-Model-Tests-ViewModels',
+	#package : 'OpenPonk-Model-Tests',
+	#tag : 'ViewModels'
 }
 
 { #category : 'tests' }

@@ -1,9 +1,9 @@
 Class {
 	#name : 'OPModelObjectSerializationTest',
 	#superclass : 'TestCase',
-	#category : 'OpenPonk-Model-Tests',
-	#package : 'OpenPonk-Model',
-	#tag : 'Tests'
+	#category : 'OpenPonk-Model-Tests-ModelObjects',
+	#package : 'OpenPonk-Model-Tests',
+	#tag : 'ModelObjects'
 }
 
 { #category : 'tests' }

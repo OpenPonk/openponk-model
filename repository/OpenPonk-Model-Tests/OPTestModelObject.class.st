@@ -4,7 +4,7 @@ A minimal domain model element subclass used exclusively for unit testing of cor
 Class {
 	#name : 'OPTestModelObject',
 	#superclass : 'OPModelObject',
-	#category : 'OpenPonk-Model-Tests',
-	#package : 'OpenPonk-Model',
-	#tag : 'Tests'
+	#category : 'OpenPonk-Model-Tests-ModelObjects',
+	#package : 'OpenPonk-Model-Tests',
+	#tag : 'ModelObjects'
 }

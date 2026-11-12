@@ -4,9 +4,9 @@ A minimal view model subclass used exclusively for verifying view model registra
 Class {
 	#name : 'OPTestModelObjectViewModel',
 	#superclass : 'OPModelObjectViewModel',
-	#category : 'OpenPonk-Model-Tests',
-	#package : 'OpenPonk-Model',
-	#tag : 'Tests'
+	#category : 'OpenPonk-Model-Tests-ViewModels',
+	#package : 'OpenPonk-Model-Tests',
+	#tag : 'ViewModels'
 }
 
 { #category : 'testing' }

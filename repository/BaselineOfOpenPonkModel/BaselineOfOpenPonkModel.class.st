@@ -18,6 +18,9 @@ BaselineOfOpenPonkModel >> baseline: spec [
 				with: [ spec repository: 'github://OpenPonk/openponk' ].
 			spec package: 'OpenPonk-Model'.
 			spec
+				package: 'OpenPonk-Model-Tests'
+				with: [ spec requires: #( 'OpenPonk-Model' 'OpenPonk' ) ].
+			spec
 				group: 'plugin' with: #( 'OpenPonk-Model' );
-				group: 'default' with: #( 'OpenPonk' 'plugin' ) ]
+				group: 'default' with: #( 'OpenPonk' 'plugin' 'OpenPonk-Model-Tests' ) ]
 ]
