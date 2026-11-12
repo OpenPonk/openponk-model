@@ -1,19 +1,1 @@
-SmalltalkCISpec {
-	#loading : [
-		SCIMetacelloLoadSpec {
-			#baseline : 'OpenPonkModel',
-			#directory : 'repository',
-			#platforms : [ #pharo ]
-		}
-	],
-	#testing : {		
-		#packages : [
-			'OpenPonk*'
-		],
-		#coverage : { 
-			#packages: [ 
-				'OpenPonk-Model*' 
-			] 
-		}
-	}
-}
+SmalltalkCISpec {	#loading : [		SCIMetacelloLoadSpec {			#baseline : 'OpenPonkModel',			#directory : 'repository',			#platforms : [ #pharo ]		}	],	#testing : {		#packages : [			'OpenPonk*'		],		#coverage : {			#packages : [				'OpenPonk-Model'			]		}	}}
