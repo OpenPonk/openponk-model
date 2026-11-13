@@ -4,7 +4,20 @@ A minimal domain model element subclass used exclusively for unit testing of cor
 Class {
 	#name : 'OPTestModelObject',
 	#superclass : 'OPModelObject',
+	#instVars : [
+		'relatedElements'
+	],
 	#category : 'OpenPonk-Model-Tests-ModelObjects',
 	#package : 'OpenPonk-Model-Tests',
 	#tag : 'ModelObjects'
 }
+
+{ #category : 'accessing' }
+OPTestModelObject >> relatedElements [
+	^ relatedElements ifNil: [ #() ]
+]
+
+{ #category : 'accessing' }
+OPTestModelObject >> relatedElements: aCollection [
+	relatedElements := aCollection
+]

@@ -9,11 +9,6 @@ Class {
 	#tag : 'ViewModels'
 }
 
-{ #category : 'testing' }
-OPTestModelObjectViewModel class >> isAbstract [
-	^ false
-]
-
 { #category : 'accessing' }
 OPTestModelObjectViewModel class >> modelClass [
 	^ OPTestModelObject

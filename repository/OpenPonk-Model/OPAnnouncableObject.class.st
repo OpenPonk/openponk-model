@@ -83,12 +83,6 @@ OPAnnouncableObject >> weakWhen: anAnnouncementClass send: aSelector to: aReceiv
 ]
 
 { #category : 'announcement registration' }
-OPAnnouncableObject >> weakWhenChangedSend: aSelector to: aReceiver [
-
-	^ self weakWhen: OPModelChanged send: aSelector to: aReceiver
-]
-
-{ #category : 'announcement registration' }
 OPAnnouncableObject >> when: anAnnouncementClass do: aValuable [
 
 	| subscriberForDeprecation |

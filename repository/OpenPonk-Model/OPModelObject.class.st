@@ -54,13 +54,6 @@ OPModelObject >> allElements [
 	^ self elements asSet flatCollect: [ :each | each withAllElements ]
 ]
 
-{ #category : 'accessing' }
-OPModelObject >> belongsTo [
-	"FAMIX compatibility"
-
-	^ self owner
-]
-
 { #category : 'removing' }
 OPModelObject >> detach [
 	owner := nil
