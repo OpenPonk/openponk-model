@@ -23,8 +23,9 @@ OPModelObjectViewModelTest >> tearDown [
 
 { #category : 'tests' }
 OPModelObjectViewModelTest >> testHierarchyPropagationAndOwnedModelRemoval [
+
 	| project parentModel childModel relatedModel projectController registry parentViewModel childViewModel forwardedAnnouncements expectedIcon |
-	project := OPProject name: 'ViewModelHierarchyTest'.
+	project := OPProject named: 'ViewModelHierarchyTest'.
 	parentModel := OPTestModelObject new name: 'Parent'.
 	childModel := OPTestModelObject new name: 'Child'.
 	relatedModel := OPTestModelObject new name: 'Related'.
@@ -45,7 +46,9 @@ OPModelObjectViewModelTest >> testHierarchyPropagationAndOwnedModelRemoval [
 	self assert: parentViewModel icon extent equals: expectedIcon extent.
 	self assert: parentViewModel icon bits equals: expectedIcon bits.
 	self assertCollection: parentViewModel childrenModels hasSameElements: { childModel }.
-	self assertCollection: parentViewModel dependentElements hasSameElements: { childModel . relatedModel }.
+	self assertCollection: parentViewModel dependentElements hasSameElements: {
+			childModel.
+			relatedModel }.
 	self assert: parentViewModel findParentViewModel identicalTo: registry projectViewModel.
 	self assert: childViewModel findParentViewModel identicalTo: parentViewModel.
 
@@ -61,8 +64,9 @@ OPModelObjectViewModelTest >> testHierarchyPropagationAndOwnedModelRemoval [
 
 { #category : 'tests' }
 OPModelObjectViewModelTest >> testRemoveRootModelWithoutOwnerRemovesFromProject [
+
 	| project rootModel projectController viewModelRegistry viewModel |
-	project := OPProject name: 'RootModelRemovalTest'.
+	project := OPProject named: 'RootModelRemovalTest'.
 	rootModel := OPTestModelObject new.
 	rootModel name: 'RootElement'.
 	project addModel: rootModel.
@@ -82,8 +86,9 @@ OPModelObjectViewModelTest >> testRemoveRootModelWithoutOwnerRemovesFromProject 
 
 { #category : 'tests' }
 OPModelObjectViewModelTest >> testUnsubscribeStopsForwardingModelAnnouncements [
+
 	| project rootModel projectController viewModel forwardedCount |
-	project := OPProject name: 'UnsubscribeTest'.
+	project := OPProject named: 'UnsubscribeTest'.
 	rootModel := OPTestModelObject new name: 'Root'.
 	project addModel: rootModel.
 	projectController := OPProjectController forProject: project.
