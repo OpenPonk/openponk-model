@@ -43,7 +43,10 @@ OPModelObjectViewModel >> creationPriority [
 { #category : 'accessing' }
 OPModelObjectViewModel >> dependentElements [
 
-	^ super dependentElements , self model relatedElements asArray
+	^ super dependentElements asOrderedCollection
+		  addAll: self model relatedElements;
+		  removeDuplicates;
+		  yourself
 ]
 
 { #category : 'accessing' }

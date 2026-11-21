@@ -18,3 +18,11 @@ OPTestDirectedAssociationViewModel class >> isAbstract [
 OPTestDirectedAssociationViewModel class >> modelClass [
 	^ OPDirectedAssociation
 ]
+
+{ #category : 'construction' }
+OPTestDirectedAssociationViewModel >> attachModelFrom: sourceViewModel to: targetViewModel [
+
+	self model
+		source: sourceViewModel model;
+		target: targetViewModel model
+]

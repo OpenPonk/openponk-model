@@ -3,41 +3,62 @@ Tests baseline view model behavior, property notification, and change propagatio
 "
 Class {
 	#name : 'OPModelObjectViewModelTest',
-	#superclass : 'TestCase',
+	#superclass : 'OPAbstractViewModelTest',
 	#category : 'OpenPonk-Model-Tests-ViewModels',
 	#package : 'OpenPonk-Model-Tests',
 	#tag : 'ViewModels'
 }
 
-{ #category : 'running' }
-OPModelObjectViewModelTest >> setUp [
-	super setUp.
-	OPViewModelRegistry resetCache
+{ #category : 'constants' }
+OPModelObjectViewModelTest >> modelClass [
+
+	^ OPTestModelObject
 ]
 
-{ #category : 'running' }
-OPModelObjectViewModelTest >> tearDown [
-	OPViewModelRegistry resetCache.
-	super tearDown
+{ #category : 'initialization' }
+OPModelObjectViewModelTest >> newRootModel [
+
+	^ OPTestModelObject new
+		  name: 'Root';
+		  yourself
+]
+
+{ #category : 'tests' }
+OPModelObjectViewModelTest >> testDependentElementsDeduplicatesChildrenAndRelatedElements [
+
+	| testProject containerModel childModel projectController parentViewModel dependents |
+	testProject := OPProject named: 'DependentDeduplicationTest'.
+	containerModel := OPTestModelObject new name: 'Parent'.
+	childModel := OPTestModelObject new name: 'SharedChild'.
+	containerModel add: childModel.
+	containerModel relatedElements: { childModel }.
+	testProject addModel: containerModel.
+	projectController := OPProjectController forProject: testProject.
+	parentViewModel := projectController viewModelRegistry viewModelFor: containerModel.
+
+	dependents := parentViewModel dependentElements.
+
+	self assert: dependents size equals: 1.
+	self assertCollection: dependents hasSameElements: { childModel }
 ]
 
 { #category : 'tests' }
 OPModelObjectViewModelTest >> testHierarchyPropagationAndOwnedModelRemoval [
 
-	| project parentModel childModel relatedModel projectController registry parentViewModel childViewModel forwardedAnnouncements expectedIcon |
-	project := OPProject named: 'ViewModelHierarchyTest'.
-	parentModel := OPTestModelObject new name: 'Parent'.
+	| testProject containerModel childModel relatedModel projectController testRegistry parentViewModel childViewModel forwardedAnnouncements expectedIcon |
+	testProject := OPProject named: 'ViewModelHierarchyTest'.
+	containerModel := OPTestModelObject new name: 'Parent'.
 	childModel := OPTestModelObject new name: 'Child'.
 	relatedModel := OPTestModelObject new name: 'Related'.
-	parentModel add: childModel.
-	parentModel relatedElements: { relatedModel }.
-	project addModel: parentModel.
-	project addModel: relatedModel.
+	containerModel add: childModel.
+	containerModel relatedElements: { relatedModel }.
+	testProject addModel: containerModel.
+	testProject addModel: relatedModel.
 
-	projectController := OPProjectController forProject: project.
-	registry := projectController viewModelRegistry.
-	parentViewModel := registry viewModelFor: parentModel.
-	childViewModel := registry viewModelFor: childModel.
+	projectController := OPProjectController forProject: testProject.
+	testRegistry := projectController viewModelRegistry.
+	parentViewModel := testRegistry viewModelFor: containerModel.
+	childViewModel := testRegistry viewModelFor: childModel.
 	expectedIcon := OPCoreIcons openponkIcon.
 
 	self assert: OPModelObjectViewModel isAbstract description: 'OPModelObjectViewModel must be abstract'.
@@ -49,7 +70,7 @@ OPModelObjectViewModelTest >> testHierarchyPropagationAndOwnedModelRemoval [
 	self assertCollection: parentViewModel dependentElements hasSameElements: {
 			childModel.
 			relatedModel }.
-	self assert: parentViewModel findParentViewModel identicalTo: registry projectViewModel.
+	self assert: parentViewModel findParentViewModel identicalTo: testRegistry projectViewModel.
 	self assert: childViewModel findParentViewModel identicalTo: parentViewModel.
 
 	forwardedAnnouncements := OrderedCollection new.
@@ -58,48 +79,54 @@ OPModelObjectViewModelTest >> testHierarchyPropagationAndOwnedModelRemoval [
 	self assert: forwardedAnnouncements size equals: 1.
 
 	childViewModel basicRemoveModel.
-	self assertEmpty: parentModel elements.
+	self assertEmpty: containerModel elements.
 	self assert: childModel owner identicalTo: nil
 ]
 
 { #category : 'tests' }
 OPModelObjectViewModelTest >> testRemoveRootModelWithoutOwnerRemovesFromProject [
 
-	| project rootModel projectController viewModelRegistry viewModel |
-	project := OPProject named: 'RootModelRemovalTest'.
-	rootModel := OPTestModelObject new.
-	rootModel name: 'RootElement'.
-	project addModel: rootModel.
-	projectController := OPProjectController forProject: project.
+	| testProject standaloneRoot projectController viewModelRegistry rootViewModel |
+	testProject := OPProject named: 'RootModelRemovalTest'.
+	standaloneRoot := OPTestModelObject new.
+	standaloneRoot name: 'RootElement'.
+	testProject addModel: standaloneRoot.
+	projectController := OPProjectController forProject: testProject.
 	viewModelRegistry := projectController viewModelRegistry.
-	viewModel := viewModelRegistry viewModelFor: rootModel.
+	rootViewModel := viewModelRegistry viewModelFor: standaloneRoot.
 
-	self assertCollection: project models hasSameElements: { rootModel }.
+	self assertCollection: testProject models hasSameElements: { standaloneRoot }.
 
-	viewModel basicRemoveModel.
+	rootViewModel basicRemoveModel.
 
-	self assertEmpty: project models.
+	self assertEmpty: testProject models.
 
-	viewModel registerModelIn: project.
-	self assertCollection: project models hasSameElements: { rootModel }
+	rootViewModel registerModelIn: testProject.
+	self assertCollection: testProject models hasSameElements: { standaloneRoot }
 ]
 
 { #category : 'tests' }
 OPModelObjectViewModelTest >> testUnsubscribeStopsForwardingModelAnnouncements [
 
-	| project rootModel projectController viewModel forwardedCount |
-	project := OPProject named: 'UnsubscribeTest'.
-	rootModel := OPTestModelObject new name: 'Root'.
-	project addModel: rootModel.
-	projectController := OPProjectController forProject: project.
-	viewModel := projectController viewModelRegistry viewModelFor: rootModel.
+	| testProject standaloneRoot projectController rootViewModel forwardedCount |
+	testProject := OPProject named: 'UnsubscribeTest'.
+	standaloneRoot := OPTestModelObject new name: 'Root'.
+	testProject addModel: standaloneRoot.
+	projectController := OPProjectController forProject: testProject.
+	rootViewModel := projectController viewModelRegistry viewModelFor: standaloneRoot.
 
 	forwardedCount := 0.
-	viewModel announcer when: OPModelChanged do: [ :ann | forwardedCount := forwardedCount + 1 ] for: self.
-	rootModel name: 'FirstChange'.
+	rootViewModel announcer when: OPModelChanged do: [ :ann | forwardedCount := forwardedCount + 1 ] for: self.
+	standaloneRoot name: 'FirstChange'.
 	self assert: forwardedCount equals: 1.
 
-	viewModel unsubscribeFromModel.
-	rootModel name: 'SecondChange'.
+	rootViewModel unsubscribeFromModel.
+	standaloneRoot name: 'SecondChange'.
 	self assert: forwardedCount equals: 1
+]
+
+{ #category : 'constants' }
+OPModelObjectViewModelTest >> viewModelClass [
+
+	^ OPTestModelObjectViewModel
 ]

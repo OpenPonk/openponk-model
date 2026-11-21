@@ -3,29 +3,43 @@ Unit tests for directed association view model dependencies, display string form
 "
 Class {
 	#name : 'OPDirectedAssociationViewModelTest',
-	#superclass : 'TestCase',
+	#superclass : 'OPAbstractDirectionalRelationshipViewModelTest',
 	#category : 'OpenPonk-Model-Tests-ViewModels',
 	#package : 'OpenPonk-Model-Tests',
 	#tag : 'ViewModels'
 }
 
-{ #category : 'running' }
-OPDirectedAssociationViewModelTest >> setUp [
-	super setUp.
-	OPViewModelRegistry resetCache
+{ #category : 'constants' }
+OPDirectedAssociationViewModelTest >> modelClass [
+
+	^ OPDirectedAssociation
 ]
 
-{ #category : 'running' }
-OPDirectedAssociationViewModelTest >> tearDown [
-	OPViewModelRegistry resetCache.
-	super tearDown
+{ #category : 'initialization' }
+OPDirectedAssociationViewModelTest >> newRootModel [
+
+	^ OPTestModelObject new
+		  name: 'Root';
+		  yourself
+]
+
+{ #category : 'constants' }
+OPDirectedAssociationViewModelTest >> sourceModelClass [
+
+	^ OPTestModelObject
+]
+
+{ #category : 'constants' }
+OPDirectedAssociationViewModelTest >> targetModelClass [
+
+	^ OPTestModelObject
 ]
 
 { #category : 'tests' }
 OPDirectedAssociationViewModelTest >> testDependenciesAndValidation [
 
-	| project source target association incompleteAssociation registry viewModel incompleteViewModel |
-	project := OPProject named: 'AssocDependenciesTest'.
+	| testProject source target association incompleteAssociation testRegistry associationViewModel incompleteViewModel |
+	testProject := OPProject named: 'AssocDependenciesTest'.
 	source := OPTestModelObject new name: 'A'.
 	target := OPTestModelObject new name: 'B'.
 	association := OPDirectedAssociation from: source to: target.
@@ -34,18 +48,18 @@ OPDirectedAssociationViewModelTest >> testDependenciesAndValidation [
 		source.
 		target.
 		association.
-		incompleteAssociation } do: [ :each | project addModel: each ].
+		incompleteAssociation } do: [ :each | testProject addModel: each ].
 
-	registry := (OPProjectController forProject: project) viewModelRegistry.
-	viewModel := registry viewModelFor: association.
-	incompleteViewModel := registry viewModelFor: incompleteAssociation.
+	testRegistry := (OPProjectController forProject: testProject) viewModelRegistry.
+	associationViewModel := testRegistry viewModelFor: association.
+	incompleteViewModel := testRegistry viewModelFor: incompleteAssociation.
 
 	self assert: OPDirectedAssociationViewModel isAbstract description: 'OPDirectedAssociationViewModel must be abstract'.
 	self deny: OPTestDirectedAssociationViewModel isAbstract description: 'Concrete subclass must not be abstract'.
-	self assert: viewModel creationPriority equals: 20.
-	self assert: viewModel modelSource identicalTo: source.
-	self assert: viewModel modelTarget identicalTo: target.
-	self assertCollection: viewModel dependingOnElements hasSameElements: {
+	self assert: associationViewModel creationPriority equals: 20.
+	self assert: associationViewModel modelSource identicalTo: source.
+	self assert: associationViewModel modelTarget identicalTo: target.
+	self assertCollection: associationViewModel dependingOnElements hasSameElements: {
 			source.
 			target }.
 
@@ -55,24 +69,26 @@ OPDirectedAssociationViewModelTest >> testDependenciesAndValidation [
 { #category : 'tests' }
 OPDirectedAssociationViewModelTest >> testModelDisplayStringFormatting [
 
-	| project registry source target association viewModel unnamedSource unnamedTarget |
-	project := OPProject named: 'AssocFormattingTest'.
+	| testProject testRegistry source target association associationViewModel unnamedSource unnamedTarget |
+	testProject := OPProject named: 'AssocFormattingTest'.
 	source := OPTestModelObject new name: 'Order'.
 	target := OPTestModelObject new name: 'Customer'.
 	association := OPDirectedAssociation from: source to: target.
 	{
 		source.
 		target.
-		association } do: [ :each | project addModel: each ].
-	registry := (OPProjectController forProject: project) viewModelRegistry.
-	viewModel := registry viewModelFor: association.
+		association } do: [ :each | testProject addModel: each ].
+	testRegistry := (OPProjectController forProject: testProject) viewModelRegistry.
+	associationViewModel := testRegistry viewModelFor: association.
 
 	self
-		assert: (String streamContents: [ :s | viewModel modelDisplayStringOn: s ])
+		assert: (String streamContents: [ :s | associationViewModel modelDisplayStringOn: s ])
 		equals: 'Order -> Customer (Directed Association)'.
 
 	association name: 'places'.
-	self assert: (String streamContents: [ :s | viewModel modelDisplayStringOn: s ]) equals: 'places (Directed Association)'.
+	self
+		assert: (String streamContents: [ :s | associationViewModel modelDisplayStringOn: s ])
+		equals: 'places (Directed Association)'.
 
 	unnamedSource := OPTestModelObject new.
 	unnamedTarget := OPTestModelObject new.
@@ -80,14 +96,22 @@ OPDirectedAssociationViewModelTest >> testModelDisplayStringFormatting [
 	{
 		unnamedSource.
 		unnamedTarget.
-		association } do: [ :each | project addModel: each ].
-	viewModel := registry viewModelFor: association.
+		association } do: [ :each | testProject addModel: each ].
+	associationViewModel := testRegistry viewModelFor: association.
 	self
-		assert: (String streamContents: [ :s | viewModel modelDisplayStringOn: s ])
+		assert: (String streamContents: [ :s | associationViewModel modelDisplayStringOn: s ])
 		equals: 'OPTestModelObject -> OPTestModelObject (Directed Association)'.
 
 	association := OPDirectedAssociation new.
-	project addModel: association.
-	viewModel := registry viewModelFor: association.
-	self assert: (String streamContents: [ :s | viewModel modelDisplayStringOn: s ]) equals: '? -> ? (Directed Association)'
+	testProject addModel: association.
+	associationViewModel := testRegistry viewModelFor: association.
+	self
+		assert: (String streamContents: [ :s | associationViewModel modelDisplayStringOn: s ])
+		equals: '? -> ? (Directed Association)'
+]
+
+{ #category : 'constants' }
+OPDirectedAssociationViewModelTest >> viewModelClass [
+
+	^ OPTestDirectedAssociationViewModel
 ]
