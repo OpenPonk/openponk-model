@@ -84,6 +84,29 @@ OPModelObjectViewModelTest >> testHierarchyPropagationAndOwnedModelRemoval [
 ]
 
 { #category : 'tests' }
+OPModelObjectViewModelTest >> testParentViewModelResetsWhenModelOwnerChanges [
+
+	| testProject firstOwner secondOwner childModel testRegistry firstOwnerViewModel secondOwnerViewModel childViewModel |
+	testProject := OPProject named: 'ReparentingTest'.
+	firstOwner := OPTestModelObject new name: 'FirstOwner'.
+	secondOwner := OPTestModelObject new name: 'SecondOwner'.
+	childModel := OPTestModelObject new name: 'Child'.
+	firstOwner add: childModel.
+	testProject addModel: firstOwner.
+	testProject addModel: secondOwner.
+
+	testRegistry := (OPProjectController forProject: testProject) viewModelRegistry.
+	firstOwnerViewModel := testRegistry viewModelFor: firstOwner.
+	secondOwnerViewModel := testRegistry viewModelFor: secondOwner.
+	childViewModel := testRegistry viewModelFor: childModel.
+
+	self assert: childViewModel parentViewModel identicalTo: firstOwnerViewModel.
+
+	secondOwner add: childModel.
+	self assert: childViewModel parentViewModel identicalTo: secondOwnerViewModel
+]
+
+{ #category : 'tests' }
 OPModelObjectViewModelTest >> testRemoveRootModelWithoutOwnerRemovesFromProject [
 
 	| testProject standaloneRoot projectController viewModelRegistry rootViewModel |

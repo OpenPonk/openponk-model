@@ -1,3 +1,6 @@
+"
+Unit tests verifying UUID initialization and STON serialization/materialization roundtrips for model objects and their diagram references.
+"
 Class {
 	#name : 'OPModelObjectSerializationTest',
 	#superclass : 'TestCase',

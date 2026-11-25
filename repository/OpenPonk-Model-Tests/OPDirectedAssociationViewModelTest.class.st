@@ -67,6 +67,35 @@ OPDirectedAssociationViewModelTest >> testDependenciesAndValidation [
 ]
 
 { #category : 'tests' }
+OPDirectedAssociationViewModelTest >> testDependingOnElementsSignalsErrorWhenSourceOrTargetMissing [
+
+	| testProject source target missingSource missingTarget testRegistry missingSourceViewModel missingTargetViewModel |
+	testProject := OPProject named: 'MissingEndsTest'.
+	source := OPTestModelObject new name: 'Source'.
+	target := OPTestModelObject new name: 'Target'.
+	missingSource := OPDirectedAssociation from: nil to: target.
+	missingTarget := OPDirectedAssociation from: source to: nil.
+	{
+		source.
+		target.
+		missingSource.
+		missingTarget } do: [ :each | testProject addModel: each ].
+	testRegistry := (OPProjectController forProject: testProject) viewModelRegistry.
+	missingSourceViewModel := testRegistry viewModelFor: missingSource.
+	missingTargetViewModel := testRegistry viewModelFor: missingTarget.
+
+	self should: [ missingSourceViewModel dependingOnElements ] raise: Error withExceptionDo: [ :error |
+			self
+				assert: (error messageText beginsWith: 'There is no source of ')
+				description: 'Error message must identify the missing source' ].
+
+	self should: [ missingTargetViewModel dependingOnElements ] raise: Error withExceptionDo: [ :error |
+			self
+				assert: (error messageText beginsWith: 'There is no target of ')
+				description: 'Error message must identify the missing target' ]
+]
+
+{ #category : 'tests' }
 OPDirectedAssociationViewModelTest >> testModelDisplayStringFormatting [
 
 	| testProject testRegistry source target association associationViewModel unnamedSource unnamedTarget |

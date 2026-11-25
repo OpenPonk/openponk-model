@@ -49,6 +49,25 @@ OPAnnouncableObjectTest >> testSerializationExcludesAnnouncer [
 ]
 
 { #category : 'tests' }
+OPAnnouncableObjectTest >> testSilentlyDoRestoresAnnouncerOnError [
+
+	| count |
+	count := 0.
+	announcable when: OPModelChanged do: [ :ann | count := count + 1 ] for: self.
+
+	self
+		should: [
+				announcable silentlyDo: [
+						announcable changed.
+						Error signal: 'Simulated failure' ] ]
+		raise: Error.
+	self assert: count equals: 0.
+
+	announcable changed.
+	self assert: count equals: 1
+]
+
+{ #category : 'tests' }
 OPAnnouncableObjectTest >> testSilentlyDoSuppressesAnnouncementsAndRestoresAnnouncer [
 	| count |
 	count := 0.

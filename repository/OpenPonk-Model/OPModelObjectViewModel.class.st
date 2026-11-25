@@ -16,7 +16,7 @@ OPModelObjectViewModel class >> isAbstract [
 	^ self = OPModelObjectViewModel
 ]
 
-{ #category : 'removing' }
+{ #category : 'private' }
 OPModelObjectViewModel >> basicRemoveModel [
 	"Specific domain model removal logic - removal from owner, disconnecting from peers, etc."
 
